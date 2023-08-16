@@ -8,6 +8,7 @@ retro=xxx
 # az extension add --name azure-devops --upgrade -y
 
 # NEXT, login into Azure Devops and create a pat
+# PAT must have work-items READ, extensions data READ, and extensions READ
 # az devops login --org $org
 
 # az devops project list --org=$org -o table 
