@@ -1,12 +1,15 @@
 #!/bin/sh
 
-org=https://dev.azure.com/xxx
+org=https://xxx.visualstudio.com/
 project=xxx
-saName=xxx
-saContainer=xxx
 retro=xxx
 
+# FIRST, Make sure you have the devops cli extension installed.
 # az extension add --name azure-devops --upgrade -y
+
+# NEXT, login into Azure Devops and create a pat
+# az devops login --org $org
+
 # az devops project list --org=$org -o table 
 # https://dev.azure.com/azurefasttrack/_apis/Contribution/HierarchyQuery/project/xxx
 # https://azurefasttrack.extmgmt.visualstudio.com/_apis/ExtensionManagement/InstalledExtensions/ms-devlabs/team-retrospectives/Data/Scopes/Default/Current/Collections/$retro/Documents
@@ -25,7 +28,7 @@ for id in $ids; do
     if [ $status -ne 0 ]; then
         echo "WARNING"
     else
-        echo $data > $id.documents.json
+        echo $data | tr '\n' ' ' > $id.documents.json
     fi
 done
 
